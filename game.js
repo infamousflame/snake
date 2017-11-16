@@ -26,7 +26,7 @@ function draw() {
   ctx.clearRect(0, 0, width, height)
   ctx.fillStyle = 'lightgreen';
   for(var i = 0; i < state.tail; i++){
-    ctx.fillRect(state.x - (30 * i), state.y - (30 * i), 30, 30);
+    ctx.fillRect(state.x, state.y - (30 * i), 30, 30);
   }
   ctx.fillStyle = 'red';
   ctx.fillRect(state.appleX - 30, state.appleY - 30, 30, 30);
