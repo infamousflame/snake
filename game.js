@@ -24,6 +24,8 @@ spawnApple()
 
 function draw() {
   ctx.clearRect(0, 0, width, height)
+  ctx.font = "30px Arial";
+  ctx.fillText("Ayy your school lmao: " + state.tail, 100, 100);
   ctx.fillStyle = 'lightgreen';
   for(var i = 0; i < state.tail; i++){
     ctx.fillRect(state.x, state.y - (30 * i), 30, 30);
