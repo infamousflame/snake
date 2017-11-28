@@ -40,16 +40,24 @@ function draw() {
 function keyDown(event){
   switch(event.key){
     case "ArrowRight":
-      state.direction = "right";
+      if(state.direction != "left"){
+        state.direction = "right";
+      }
       break;
     case "ArrowLeft":
-      state.direction = "left";
+      if(state.direction != "right"){
+        state.direction = "left";
+      }
       break;
     case "ArrowUp":
-      state.direction = "up";
+      if(state.direction != "down"){
+        state.direction = "up";
+      }
       break;
     case "ArrowDown":
-      state.direction = "down";
+      if(state.direction != "up"){
+        state.direction = "down";
+      }
       break;
   }
 }
@@ -108,12 +116,9 @@ var delta;
 
 function snakeTail(firstState){
   for(var i = state.length - 1; i > 0; i--){
-    console.log(i);
     if(i != 0){
       state[i].x = firstState[i - 1].x;
       state[i].y = firstState[i - 1].y;
-      // console.log(state[i].x);
-      console.log(i);
     }
   }
 }
@@ -130,8 +135,17 @@ function loop() {
         update(delta)
         draw()
         snakeTail(state);
+        selfCollision();
         then = now - (delta % interval);
     }
+}
+
+function selfCollision(){
+  for(var i = 2; i < state.length; i++){
+    if(state[0].x == state[i].x && state[0].y == state[i].y){
+      console.log("shitter");
+    }
+  }
 }
 
 function spawnApple(){
