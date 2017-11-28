@@ -21,7 +21,6 @@ var state = [
 ]
 
 
-
 spawnApple()
 
 
@@ -34,28 +33,28 @@ function draw() {
     ctx.fillRect(state[i].x, state[i].y, 30, 30);
   }
   ctx.fillStyle = 'red';
-  ctx.fillRect(state.appleX - 30, state.appleY - 30, 30, 30);
+  ctx.fillRect(state.appleX, state.appleY, 30, 30);
 }
 
 function keyDown(event){
   switch(event.key){
     case "ArrowRight":
-      if(state.direction != "left"){
+      if(state.direction != "left"  || state.length == 1){
         state.direction = "right";
       }
       break;
     case "ArrowLeft":
-      if(state.direction != "right"){
+      if(state.direction != "right"  || state.length == 1){
         state.direction = "left";
       }
       break;
     case "ArrowUp":
-      if(state.direction != "down"){
+      if(state.direction != "down"  || state.length == 1){
         state.direction = "up";
       }
       break;
     case "ArrowDown":
-      if(state.direction != "up"){
+      if(state.direction != "up"  || state.length == 1){
         state.direction = "down";
       }
       break;
@@ -68,8 +67,8 @@ function keyUp(event){
 var offset = 2;
 
 function update(progress) {
-
-  if((state[0].x >= state.appleX - 30 && state[0].x <= state.appleX + 40) && (state[0].y <= state.appleY + 40 && state[0].y >= state.appleY - 30)){
+  // console.log("Apple: " + state.appleX + " " + state.appleY + " Sneke " + Math.floor(state[0].x) + " "  + Math.floor(state[0].y));
+  if((Math.floor(state[0].x) >= state.appleX - 20 && Math.floor(state[0].x) <= state.appleX + 30) && (Math.floor(state[0].y) <= state.appleY + 20 && Math.floor(state[0].y) >= state.appleY - 30)){
       spawnApple();
       state.push({});
   }
