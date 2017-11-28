@@ -57,7 +57,7 @@ function keyDown(event){
 function keyUp(event){
   state.keyPressed = event.key;
 }
-var offset = 3;
+var offset = 2;
 
 function update(progress) {
 
@@ -107,7 +107,8 @@ var delta;
 
 
 function snakeTail(firstState){
-  for(var i = 0; i < state.length; i++){
+  for(var i = state.length - 1; i > 0; i--){
+    console.log(i);
     if(i != 0){
       state[i].x = firstState[i - 1].x;
       state[i].y = firstState[i - 1].y;
